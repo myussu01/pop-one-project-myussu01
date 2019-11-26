@@ -1,14 +1,19 @@
 def read_cities(file_name):
     """
-    Read in the cities from the given `file_name`, and return 
-    them as a list of four-tuples: 
-
-      [(state, city, latitude, longitude), ...] 
-
-    Use this as your initial `road_map`, that is, the cycle 
-
-      Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
+    Read in the cities from the given `file_name`, and return  them as a list of four-tuples:  [(state, city, latitude, longitude), ...]  Use this as your initial `road_map`, that is, the cycle   Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
+    cities = []
+    inputFileName = "city-data.txt"
+    try:
+        infile = open(inputFileName, "r")
+        line = infile.readline()
+        while line:
+            x = line.rstrip().replace("\t", " ").split()
+            x = tuple(x)
+            cities.append(x)
+            line = infile.readline()
+    finally:
+        infile.close()
     pass
   
 def print_cities(road_map):
