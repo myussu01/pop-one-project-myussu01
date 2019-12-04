@@ -8,24 +8,24 @@ def read_cities(file_name):
         infile = open(inputFileName, "r")
         line = infile.readline()
         while line:
-            x = line.split()
+            x = line.split("\t")
             for i in range(len(x)-1, (len(x)-3), -1):
                 x[i] = float(x[i])
             x = tuple(x)
             road_map.append(x)
             line = infile.readline()
-        return road_map
     finally:
         infile.close()
-    pass
+    return road_map
 
-print(read_cities("city-data.txt"))
+print(len(read_cities("city-data.txt"))
 
 def print_cities(road_map):
     """
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
+
     pass
 
 def compute_total_distance(road_map):
