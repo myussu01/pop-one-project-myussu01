@@ -2,6 +2,7 @@ def read_cities(file_name):
     """
     Read in the cities from the given `file_name`, and return  them as a list of four-tuples:  [(state, city, latitude, longitude), ...]  Use this as your initial `road_map`, that is, the cycle   Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
+    global road_map
     road_map = []
     inputFileName = file_name
     try:
@@ -17,16 +18,19 @@ def read_cities(file_name):
     finally:
         infile.close()
     return road_map
-
-print(len(read_cities("city-data.txt"))
-
+#print(read_cities("city-data.txt")[0][1:])
 def print_cities(road_map):
     """
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
+    x = read_cities(road_map)
+    n = []
 
-    pass
+    for i in range(len(x)):
+        n.extend(x[i][1:])
+    print(n)
+print_cities("city-data.txt")
 
 def compute_total_distance(road_map):
     """
