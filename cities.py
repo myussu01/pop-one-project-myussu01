@@ -1,8 +1,10 @@
+import math
+
+
 def read_cities(file_name):
     """
     Read in the cities from the given `file_name`, and return  them as a list of four-tuples:  [(state, city, latitude, longitude), ...]  Use this as your initial `road_map`, that is, the cycle   Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
-    global road_map
     road_map = []
     inputFileName = file_name
     try:
@@ -18,19 +20,18 @@ def read_cities(file_name):
     finally:
         infile.close()
     return road_map
-#print(read_cities("city-data.txt")[0][1:])
+
 def print_cities(road_map):
     """
-    Prints a list of cities, along with their locations. 
+    Prints a list of cities, along with their locations.
     Print only one or two digits after the decimal point.
     """
-    x = read_cities(road_map)
+
     n = []
 
-    for i in range(len(x)):
-        n.extend(x[i][1:])
+    for i in range(len(road_map)):
+        n.extend(road_map[i][1:])
     print(n)
-print_cities("city-data.txt")
 
 def compute_total_distance(road_map):
     """
@@ -38,7 +39,14 @@ def compute_total_distance(road_map):
     the connections in the `road_map`. Remember that it's a cycle, so that 
     (for example) in the initial `road_map`, Wyoming connects to Alabama...
     """
-    return 7.55443
+
+    d = 0.0
+    for i in range(0, len(road_map)-1):
+        d += math.sqrt((road_map[i][2] - road_map[i+1][2])**2 + (road_map[i][3] - road_map[i+1][3])**2)
+    d += math.sqrt((road_map[49][2] - road_map[0][2])**2 + (road_map[49][3] - road_map[0][3])**2)
+
+    return d
+
 
 
 def swap_cities(road_map, index1, index2):
@@ -52,10 +60,8 @@ def swap_cities(road_map, index1, index2):
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
-    road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
-                 ("Delaware", "Dover", 39.161921, -75.526755), \
-                 ("Minnesota", "Saint Paul", 44.95, -93.094)]
-    return (road_map1, 11.33445, 44.332)
+    road_map[index1], road_map[index2] = road_map[index2], road_map[index1]
+    return (road_map, compute_total_distance(road_map))
 
 def shift_cities(road_map):
     """
@@ -96,3 +102,8 @@ def main():
 
 if __name__ == "__main__": #keep this in
     main()
+
+cities = read_cities("city-data.txt")
+
+print_cities(cities)
+print(swap_cities(cities, 2, 0))
