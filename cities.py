@@ -106,6 +106,6 @@ if __name__ == "__main__": #keep this in
 cities = read_cities("city-data.txt")
 
 #print_cities(cities)
-#print(swap_cities(cities, 2, 0))
-print(compute_total_distance(cities))
-print(cities[-1])
+print(swap_cities(cities, 2, 0))
+#print(compute_total_distance(cities))
+#print(cities[-1])

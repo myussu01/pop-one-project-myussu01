@@ -17,8 +17,9 @@ def test_swap_cities():
                  ("Delaware", "Dover", 39.161921, -75.526755), \
                  ("Minnesota", "Saint Paul", 44.95, -93.094)]
 
-
-    assert cities.swap_cities(road_map, 0, 2) == (road_map, 33334.3)
+    assert cities.swap_cities(road_map, 0, 2) == ([("Minnesota", "Saint Paul", 44.95, -93.094), \
+                 ("Delaware", "Dover", 39.161921, -75.526755), \
+                 ("Kentucky", "Frankfort", 38.197274, -84.86311)], pytest.approx(38.5, 0.1))
 
 def test_shift_cities():
     road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
@@ -26,7 +27,7 @@ def test_shift_cities():
                  ("Minnesota", "Saint Paul", 44.95, -93.094)]
     road_map2 = []
 
-    assert shift_cities(road_map1) == road_map2
+    assert cities.shift_cities(road_map1) == road_map2
     '''add your tests'''
 
 
