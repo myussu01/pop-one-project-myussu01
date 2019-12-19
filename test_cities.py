@@ -1,27 +1,24 @@
 import pytest
-from cities import *
+import cities
 
 
 def test_compute_total_distance():
-    '''road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311),\
+    road_map = [("Kentucky", "Frankfort", 38.197274, -84.86311),\
                 ("Delaware", "Dover", 39.161921, -75.526755),\
                 ("Minnesota", "Saint Paul", 44.95, -93.094)]
 
-    assert compute_total_distance(cities)==\
-           pytest.approx(9.386+18.496+10.646, 0.01)'''
     '''add your tests'''
 
-    assert compute_total_distance(cities) == type(float)
-
+    assert cities.compute_total_distance(road_map) == pytest.approx(38.5, 0.1)
 
 def test_swap_cities():
     '''add your tests'''
-    road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
+    road_map = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
                  ("Delaware", "Dover", 39.161921, -75.526755), \
                  ("Minnesota", "Saint Paul", 44.95, -93.094)]
 
 
-    assert swap_cities(road_map1, 11.223, 44.67) == (road_map1,0,0)
+    assert cities.swap_cities(road_map, 0, 2) == (road_map, 33334.3)
 
 def test_shift_cities():
     road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \

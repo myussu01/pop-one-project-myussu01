@@ -43,7 +43,7 @@ def compute_total_distance(road_map):
     d = 0.0
     for i in range(0, len(road_map)-1):
         d += math.sqrt((road_map[i][2] - road_map[i+1][2])**2 + (road_map[i][3] - road_map[i+1][3])**2)
-    d += math.sqrt((road_map[49][2] - road_map[0][2])**2 + (road_map[49][3] - road_map[0][3])**2)
+    d += math.sqrt((road_map[-1][2] - road_map[0][2])**2 + (road_map[-1][3] - road_map[0][3])**2)
 
     return d
 
@@ -105,5 +105,7 @@ if __name__ == "__main__": #keep this in
 
 cities = read_cities("city-data.txt")
 
-print_cities(cities)
-print(swap_cities(cities, 2, 0))
+#print_cities(cities)
+#print(swap_cities(cities, 2, 0))
+print(compute_total_distance(cities))
+print(cities[-1])
