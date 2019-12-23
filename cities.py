@@ -1,5 +1,5 @@
 import math
-
+import copy
 
 def read_cities(file_name):
     """
@@ -61,7 +61,8 @@ def swap_cities(road_map, index1, index2):
     and handle this case correctly.
     """
     road_map[index1], road_map[index2] = road_map[index2], road_map[index1]
-    return (road_map, compute_total_distance(road_map))
+    return road_map, compute_total_distance(road_map)
+
 
 def shift_cities(road_map):
     """
@@ -69,11 +70,7 @@ def shift_cities(road_map):
     to the position i+1. The city at the last position moves to the position
     0. Return the new road map. 
     """
-    road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
-                 ("Delaware", "Dover" , 39.161921, -75.526755), \
-                 ("Minnesota", "Saint Paul", 44.95, -93.094)]
-
-    return road_map1
+    road_map[:] = road_map[-1:] + road_map[:-1]
 
 
 def find_best_cycle(road_map):
@@ -106,6 +103,7 @@ if __name__ == "__main__": #keep this in
 cities = read_cities("city-data.txt")
 
 #print_cities(cities)
-print(swap_cities(cities, 2, 0))
+#print(swap_cities(cities, 2, 0))
 #print(compute_total_distance(cities))
-#print(cities[-1])
+shift_cities(cities)
+print(cities)
