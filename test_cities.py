@@ -29,9 +29,8 @@ def test_shift_cities():
                 ("Delaware", "Dover", 39.161921, -75.526755),
                 ("Minnesota", "Saint Paul", 44.95, -93.094)]
 
-    assert cities.shift_cities(road_map) == [("Minnesota", "Saint Paul", 44.95, -93.094),
-                                             ("Kentucky", "Frankfort", 38.197274, -84.86311),
-                                             ("Delaware", "Dover", 39.161921, -75.526755)]
+    ''
+    assert cities.shift_cities(road_map) == None
 
     assert road_map[0][2] == pytest.approx(44.9, 0.1)
 
