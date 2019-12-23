@@ -71,6 +71,7 @@ def shift_cities(road_map):
     0. Return the new road map. 
     """
     road_map[:] = road_map[-1:] + road_map[:-1]
+    return road_map
 
 
 def find_best_cycle(road_map):
