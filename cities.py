@@ -1,5 +1,5 @@
 import math
-import copy
+import random
 
 def read_cities(file_name):
     """
@@ -81,7 +81,14 @@ def find_best_cycle(road_map):
     After `10000` swaps/shifts, return the best cycle found so far.
     Use randomly generated indices for swapping.
     """
-    pass
+
+    shortest_distance = compute_total_distance(road_map)
+    for i in range(0, 10001):
+        swap_cities(road_map, random.randint(0, 49), random.randint(0, 49))
+        shift_cities(road_map)
+        if compute_total_distance(road_map) < shortest_distance:
+            shortest_distance = compute_total_distance(road_map)
+    return shortest_distance
 
 def print_map(road_map):
     """
@@ -102,9 +109,8 @@ if __name__ == "__main__": #keep this in
     main()
 
 cities = read_cities("city-data.txt")
-
-#print_cities(cities)
 #print(swap_cities(cities, 2, 0))
 #print(compute_total_distance(cities))
-shift_cities(cities)
-print(cities)
+#shift_cities(cities)
+#print(cities)
+print(find_best_cycle(cities))

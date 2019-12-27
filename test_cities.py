@@ -34,6 +34,8 @@ def test_shift_cities():
                                              ("Delaware", "Dover", 39.161921, -75.526755)]
 
     assert road_map[0][2] == pytest.approx(44.9, 0.1)
+    assert road_map[2][1] == "Dover"
+
 
     '''add your tests'''
 
