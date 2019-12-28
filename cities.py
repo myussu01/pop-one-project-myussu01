@@ -1,5 +1,6 @@
 import math
 import random
+import tkinter
 
 def read_cities(file_name):
     """
@@ -96,7 +97,9 @@ def print_map(road_map):
     their connections, along with the cost for each connection 
     and the total cost.
     """
-    pass
+    for i in road_map:
+        print("City: ", i[1], "Longitude: ", i[2], "Latitude: ", i[3])
+    print("Total distance to all cities: ", compute_total_distance(road_map))
 
 def main():
     """
@@ -113,4 +116,7 @@ cities = read_cities("city-data.txt")
 #print(compute_total_distance(cities))
 #shift_cities(cities)
 #print(cities)
-print(find_best_cycle(cities))
+print(print_map(cities))
+#tk = tkinter.Tk()
+
+#tk.mainloop()
