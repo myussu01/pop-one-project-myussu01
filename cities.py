@@ -106,7 +106,12 @@ def main():
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
-    pass
+    try:
+        x = input("Specify the file to load: ")
+        print(read_cities(x))
+        print(find_best_cycle(x))
+    except Exception as error:
+        print(error)
 
 if __name__ == "__main__": #keep this in
     main()
@@ -116,7 +121,7 @@ cities = read_cities("city-data.txt")
 #print(compute_total_distance(cities))
 #shift_cities(cities)
 #print(cities)
-print(print_map(cities))
+main()
 #tk = tkinter.Tk()
 
 #tk.mainloop()
