@@ -42,9 +42,8 @@ def compute_total_distance(road_map):
     """
 
     d = 0.0
-    for i in range(0, len(road_map)-1):
-        d += math.sqrt((road_map[i][2] - road_map[i+1][2])**2 + (road_map[i][3] - road_map[i+1][3])**2)
-    d += math.sqrt((road_map[-1][2] - road_map[0][2])**2 + (road_map[-1][3] - road_map[0][3])**2)
+    for i in range(0, len(road_map)):
+        d += math.sqrt((road_map[i][2] - road_map[(i + 1) % len(road_map)][2])**2 + (road_map[i][3] - road_map[(i + 1) % len(road_map)][3])**2)
 
     return d
 
@@ -97,21 +96,22 @@ def print_map(road_map):
     their connections, along with the cost for each connection 
     and the total cost.
     """
-    for i in road_map:
-        print("City: ", i[1], "Longitude: ", i[2], "Latitude: ", i[3])
+
+    for i in range(0, len(road_map)):
+        print("State: ", road_map[i][0], "City: ", road_map[i][1], "Latitude: ", road_map[i][2], "Longitude: ", road_map[i][3])
+        print(math.sqrt((road_map[i][2] - road_map[(i + 1) % len(road_map)][2])**2 + (road_map[i][3] - road_map[(i + 1) % len(road_map)][3])**2))
     print("Total distance to all cities: ", compute_total_distance(road_map))
 
 def main():
     """
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
-    """
-    try:
+    """   """ try:
         x = input("Specify the file to load: ")
         print(read_cities(x))
         print(find_best_cycle(x))
     except Exception as error:
-        print(error)
+        print("Your file could no be opened because of the followig reason:- ", error)"""
 
 if __name__ == "__main__": #keep this in
     main()
@@ -120,8 +120,8 @@ cities = read_cities("city-data.txt")
 #print(swap_cities(cities, 2, 0))
 #print(compute_total_distance(cities))
 #shift_cities(cities)
-#print(cities)
-main()
+print(print_map(cities))
+#main()
 #tk = tkinter.Tk()
 
 #tk.mainloop()
