@@ -1,6 +1,5 @@
 import math
 import random
-import tkinter
 
 def read_cities(file_name):
     """
@@ -118,10 +117,3 @@ if __name__ == "__main__": #keep this in
     main()
 
 cities = read_cities("city-data.txt")
-#print(swap_cities(cities, 2, 0))
-#print(compute_total_distance(cities))
-#shift_cities(cities)
-#print(print_map(cities))
-#main()
-#tk = tkinter.Tk()
-#tk.mainloop()
