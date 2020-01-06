@@ -100,7 +100,7 @@ def print_map(road_map):
         print(f"City: {road_map[i][1]}, State: {road_map[i][0]}, Distance to the next City ({road_map[(i + 1) % len(road_map)][1]}) is: {round(dist, 2)}")
 
 
-    print("Total distance starting from point 1 to the last point 50:- ", compute_total_distance(road_map))
+    print("Total distance starting from point 1 to the last point 50: ", compute_total_distance(road_map))
 
 def main():
     """
@@ -111,7 +111,7 @@ def main():
         find_best_cycle(x)
         print_map(x)
     except Exception as error:
-        print("Your file could no be opened because of the following reason:- ", error)
+        print("Your file could no be opened because of the following reason: ", error)
 
 
 if __name__ == "__main__": #keep this in

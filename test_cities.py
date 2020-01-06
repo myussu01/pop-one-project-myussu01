@@ -7,9 +7,14 @@ def test_compute_total_distance():
                 ("Delaware", "Dover", 39.161921, -75.526755),\
                 ("Minnesota", "Saint Paul", 44.95, -93.094)]
 
+    road_map2 = [("London", "England", 51.5074, -0.1278), \
+                 ("Rome", "Italy", 41.9028, 12.4964), \
+                 ("Amsterdam", "The Netherlands", 52.3667, 4.8945)]
+
     '''add your tests'''
 
     assert cities.compute_total_distance(road_map) == pytest.approx(38.5, 0.1)
+    assert cities.compute_total_distance(road_map2) == pytest.approx(33.9, 0.1)
 
 def test_swap_cities():
     '''add your tests'''
@@ -27,7 +32,6 @@ def test_swap_cities():
 
     assert road_map[0][1] == "Saint Paul"
     assert road_map[-1][2] == pytest.approx(38.2, 0.1)
-
     assert cities.swap_cities(road_map2, 0, 1)
     assert road_map2[0][0] == "Rome"
     assert road_map2[1][2] == pytest.approx(51.5, 0.1)
